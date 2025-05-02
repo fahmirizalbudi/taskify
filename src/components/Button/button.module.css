@@ -9,6 +9,16 @@
     cursor: pointer;
     font-size: 14.25px;
     white-space: nowrap;
+    transition: 0.35s all ease;
+}
+
+.button:hover {
+    opacity: 92.5%;
+}
+
+.button:active {
+    opacity: 75%;
+    transform: scale(0.95);
 }
 
 .button span {
