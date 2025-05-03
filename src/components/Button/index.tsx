@@ -8,6 +8,10 @@ type Button = {
     color?: string,
     bgColor?: string,
     radius?: string,
+    topOffset?: string,
+    bottomOffset?: string,
+    startOffset?: string,
+    endOffset?: string,
 }
 
 const Button = (button: Button) => {
@@ -18,7 +22,12 @@ const Button = (button: Button) => {
             color: button.color ?? "#fff",
             backgroundColor: button.bgColor ?? "#000",
             borderRadius: button.radius ?? "0"
-         }}><span>{button.children}</span></button>
+         }}><span style={{ 
+            top: button.topOffset ?? "",
+            bottom: button.bottomOffset ?? "",
+            left: button.startOffset ?? "",
+            right: button.endOffset ?? ""
+          }}>{button.children}</span></button>
     )
 }
 
