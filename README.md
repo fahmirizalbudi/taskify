@@ -1,46 +1,37 @@
-# Astro Starter Kit: Basics
+# 🌐 Taskify
 
-```sh
-npm create astro@latest -- --template basics
+**Taskify** A progressive web app (PWA) made with Astro of todo list application.
+
+<br/>
+<br/>
+
+<p align="center">
+  <img src="https://raw.githubusercontent.com/fahmirizalbudi/taskify/refs/heads/main/taskify-capture.png" alt="Taskify Preview">
+</p>
+
+<br/>
+
+---
+
+## 🔧 Description
+
+- ⌨️ This project is a frontend UI without backend functionality.
+- 🖼️ All elements are provided by Figma.
+- 💾 Built with Astro.
+
+---
+
+## 🚀 Instalasi
+
+```bash
+git clone https://github.com/fahmirizalbudi/taskify.git
+cd taskify
+npm install
+npm run dev
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+---
 
-## 🚀 Project Structure
+## 🖼️ Figma Design
 
-Inside of your Astro project, you'll see the following folders and files:
-
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
-
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
-
-## 🧞 Commands
-
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+Link : [Taskify - Figma Design](https://www.figma.com/design/2qY39Zsy9MFsAfbm4GZ0Xc/To-Do-List-Design--Community-?node-id=0-1&p=f&t=HTJjRcIKehzPa29I-0)
