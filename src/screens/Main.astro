@@ -1,0 +1,237 @@
+---
+
+---
+
+<main class="main" x-data="todoApp()" x-init="load()">
+  <div class="main__brand">
+    <h1 class="main__header">Taskify</h1>
+  </div>
+  <section class="incomplete" x-show="incomplete.length">
+    <template x-for="t in incomplete" :key="t.id">
+      <div class="task" :class="t.isCompleted ? 'completed' : ''">
+        <div class="task__content">
+          <input
+            type="checkbox"
+            class="task__cb"
+            :checked="t.isCompleted"
+            @change="t.isCompleted = !t.isCompleted; save()"
+          />
+          <label class="task__label" x-text="t.title"></label>
+        </div>
+        <img src="/drag.svg" alt="Drag Icon" class="task__drag" />
+      </div>
+    </template>
+  </section>
+  <section class="completed" x-show="completed.length">
+    <div class="completed__header">
+      <p class="completed__header-text">COMPLETED</p>
+    </div>
+
+    <template x-for="t in completed" :key="t.id">
+      <div class="task--completed">
+        <div class="task__content">
+          <input
+            type="checkbox"
+            class="task__cb"
+            :checked="t.isCompleted"
+            @change="t.isCompleted = !t.isCompleted; save()"
+          />
+          <label class="task__label" x-text="t.title"></label>
+        </div>
+        <img src="/drag.svg" alt="Drag Icon" class="task__drag" />
+      </div>
+    </template>
+  </section>
+
+  <footer class="footer">
+    <input
+      type="text"
+      class="footer__input"
+      placeholder="Write a task..."
+      x-model="newTask"
+      @keydown.enter="add()"
+    />
+
+    <button class="footer__add" @click="add()">Add</button>
+  </footer>
+</main>
+
+<style>
+  .main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  .main__brand {
+    padding-inline: 16px;
+  }
+
+  .main__title {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -2%;
+    line-height: auto;
+  }
+
+  .completed,
+  .incomplete {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .completed__header {
+    padding-inline: 16px;
+  }
+
+  .completed__header-text {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 4%;
+    color: rgba(0, 0, 0, 0.45);
+  }
+
+  .footer {
+    width: 100%;
+    position: fixed;
+    bottom: 26px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 12px;
+    padding-inline: 16px;
+  }
+
+  .footer__input {
+    flex-grow: 1;
+    min-width: 0;
+    background-color: #f3efee;
+    color: #222;
+    font-weight: 500;
+    font-size: 18px;
+    border-radius: 12px;
+    padding: 14px 21px;
+    border: 1px solid transparent;
+    outline: none;
+  }
+
+  .footer__input::placeholder {
+    color: #222;
+  }
+
+  .footer__add {
+    background-color: #393433;
+    border: 1px solid transparent;
+    outline: none;
+    font-weight: 400;
+    font-size: 17px;
+    border-radius: 12px;
+    padding: 14px 21px;
+    color: #fff;
+  }
+
+  .task {
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #f3efee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .task--completed {
+    padding: 16px;
+    border-radius: 12px;
+    background-color: #f3efee;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    pointer-events: none;
+    opacity: 0.3;
+    background-color: #fff;
+    border: 1px solid rgba(0, 0, 0, 0.6);
+  }
+
+  .task__content {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+
+  .task__label {
+    font-weight: 500;
+    font-size: 17px;
+    line-height: auto;
+    color: #121212;
+  }
+
+  .task__cb {
+    appearance: none;
+    width: 24px;
+    height: 24px;
+    background: #ffffff;
+    border: 2px solid #9f9f9f;
+    border-radius: 6px;
+    cursor: pointer;
+    display: inline-block;
+    position: relative;
+    transition: all 0.15s ease;
+  }
+
+  .task__cb:checked {
+    background: #000000;
+    border-color: #000000;
+  }
+
+  .task__cb:checked::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: white;
+    mask-size: 70%;
+    mask-position: center;
+    mask-repeat: no-repeat;
+    mask-image: url("data:image/svg+xml;utf8,<svg viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round' xmlns='http://www.w3.org/2000/svg'><polyline points='20 6 9 17 4 12'/></svg>");
+  }
+</style>
+
+<script is:inline>
+  function todoApp() {
+    return {
+      newTask: "",
+      todos: [],
+
+      load() {
+        const saved = JSON.parse(localStorage.getItem("todos") || "[]");
+        this.todos = saved;
+      },
+
+      save() {
+        localStorage.setItem("todos", JSON.stringify(this.todos));
+      },
+
+      add() {
+        if (!this.newTask.trim()) return;
+
+        this.todos.push({
+          id: Date.now(),
+          title: this.newTask,
+          isCompleted: false,
+        });
+
+        this.newTask = "";
+        this.save();
+      },
+
+      get incomplete() {
+        return this.todos.filter((t) => !t.isCompleted);
+      },
+
+      get completed() {
+        return this.todos.filter((t) => t.isCompleted);
+      },
+    };
+  }
+</script>
