@@ -14,37 +14,37 @@
 
 <br />
 
-## ☑️ Taskify
+## Taskify
 
 Taskify is a mobile-first Progressive Web App (PWA) designed for efficient task management. Built with Astro, it delivers lightning-fast performance and a seamless native-app-like experience directly from the browser. Key features include:
 
-## 🖼️ Preview
+## Preview
 
 <p align="center">
   <img src="taskify-capture.png" alt="Taskify Screenshot" />
 </p>
 
-## ✨ Features
+## Features
 
-- **📱 Mobile First:** Optimized UI/UX specifically for mobile devices.
-- **⚡ PWA Support:** Installable on devices with offline capabilities.
-- **✅ Task Management:** Create, organize, and track your daily tasks effortlessly.
-- **🚀 High Performance:** Zero-javascript default architecture powered by Astro.
+- **Mobile First:** Optimized UI/UX specifically for mobile devices.
+- **PWA Support:** Installable on devices with offline capabilities.
+- **Task Management:** Create, organize, and track your daily tasks effortlessly.
+- **High Performance:** Zero-javascript default architecture powered by Astro.
 
-## 👩‍💻 Tech Stack
+## Tech Stack
 
 - **Astro**: An all-in-one web framework for building fast, content-focused websites.
 - **PWA**: Progressive Web App technologies for offline support and installability.
 
-## 📦 Getting Started
+## Getting Started
 
 To get a local copy of this project up and running, follow these steps.
 
-### 🚀 Prerequisites
+### Prerequisites
 
 - **Node.js** & **NPM**.
 
-## 🛠️ Installation
+## Installation
 
 1. **Clone the repository:**
 
@@ -65,15 +65,15 @@ To get a local copy of this project up and running, follow these steps.
    npm run dev
    ```
 
-## 📖 Usage
+## Usage
 
-### ✔ Running the Application
+### Running the Application
 
 - **Development mode:** `npm run dev`.
 - **Production mode:** `npm run build`.
 
 > Open [http://localhost:4321](http://localhost:4321) to view it in the browser.
 
-## 📜 License
+## License
 
 All rights reserved. This project is for educational purposes only and cannot be used or distributed without permission.
